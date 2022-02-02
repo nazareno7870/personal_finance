@@ -1,0 +1,20 @@
+.navbar{
+    position: fixed;
+    z-index: 30;
+    display: flex;
+    flex: row;
+    flex-direction: row;
+    width: 100%;
+    bottom: 0;
+    justify-content: space-between;
+    padding: 14px 30px;
+}
+
+.icon img{
+    width:30px;
+    cursor: pointer;
+    filter: invert(9%) sepia(79%) saturate(4229%) hue-rotate(278deg) brightness(96%) contrast(126%);
+}
+.icon.active img{
+    filter: invert(11%) sepia(59%) saturate(7357%) hue-rotate(302deg) brightness(89%) contrast(101%);
+}
