@@ -1,0 +1,54 @@
+.card-transactions{
+    position: relative;
+    z-index: 30;
+    background-color: #f7f7f7;
+    margin: 30px auto 80px;
+    width: 90%;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px #bbb7b7;
+}
+
+.item-transaction{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #c3c3c3;
+    padding-bottom: 4px;
+    margin-top: 6px;
+}
+.item-transaction:last-child{
+    border-bottom: none;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.title h3{
+    color: #c163b1;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+
+.info-transaction h3{
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+}
+
+.info-transaction p{
+    font-size: 10px;
+    margin-top: 4px;
+    color: grey;
+}
+
+.amount-transaction h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+.amount-transaction.entry h3{
+    color: #268326;
+}
