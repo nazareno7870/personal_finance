@@ -1,0 +1,10 @@
+.bg-top{
+    background-image: url('/src/assets/background.svg');
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 295px;
+    width: 100%;
+    position: absolute;
+    z-index: 20;
+}
