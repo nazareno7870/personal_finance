@@ -1,13 +1,16 @@
 import './App.css'
-import TopBar from './components/topBar/TopBar';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import HomePage from './components/HomePage/HomePage';
 
 function App() {
 
   return (
     <>
-        <div className="bg-top">
-        </div>
-        <TopBar title={'Wallet'}/>
+        <Router>
+          <Routes>
+              <Route exact path="/" element={<HomePage/>} />
+            </Routes>
+        </Router>
     </>
 
   )
