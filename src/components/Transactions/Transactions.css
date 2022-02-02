@@ -52,10 +52,118 @@
     font-family: 'Raleway', sans-serif;
     box-shadow: 1px 1px 2px #8d8d8d;
     transition: 0.5s;
-    height: 300px;
+    height: 280px;
 }
 
 .form-new-transaction.hidden{
     padding: 0px 20px;
     height: 0px;
+}
+
+.form-new-transaction input{
+    outline: none;
+    padding: 4px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    width: 60%;
+    margin-left: 10px;
+    margin-right: 20px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #c7c7c7;
+}
+.form-new-transaction input[type=number] {
+    font-family: 'Lato', sans-serif;
+}
+.form-new-transaction input:focus{
+    border-bottom: 1px solid #9c0682;
+
+}
+
+
+.form-new-transaction select{
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.357);
+    padding: 4px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    width: 60%;
+    margin-right: 20px;
+    margin-left: 10px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.item-new-transaction{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.item-new-transaction label{
+    color: #9c0682;
+    font-size: 14px;
+}
+
+.modal-container{
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    background-color: #00000014;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-errors{
+    background-color: #f7f7f7;
+    width: 80%;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.modal-errors p{
+    font-weight: 700;
+    color: #c70808;
+    margin-top: 6px;
+}
+.btn{
+    margin: 10px auto 0;
+    padding: 10px 40px;
+    border: none;
+    background-color: #9c0682;
+    color: #f7f7f7;
+    font-family: 'Raleway', sans-serif;
+    box-shadow: 1px 1px 2px #5e5959;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.banner-add{
+    position: absolute;
+    z-index: 300;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    align-items: center;
+    width: 60%;
+    background-color: #f7f7f7;
+    font-family: 'Raleway', sans-serif;
+    padding: 10px;
+    font-size: 10px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-around;
+    transition: 0.5s;
 }
