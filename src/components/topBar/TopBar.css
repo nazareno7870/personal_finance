@@ -1,0 +1,10 @@
+.top-bar{
+    color: #fff;
+    position: relative;
+    z-index: 30;
+    text-align: center;
+    font-weight: 500;
+    font-family: monospace;
+    padding-top: 20px;
+    font-size: 20px;
+}
