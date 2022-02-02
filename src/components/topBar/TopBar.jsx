@@ -1,8 +1,8 @@
 import './TopBar.css'
-const TopBar = () => {
+const TopBar = ({title}) => {
     return (
         <div className="top-bar">
-            <p>Wallet</p>
+            <p>{title}</p>
         </div>
     );
 }

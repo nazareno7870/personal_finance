@@ -7,7 +7,7 @@ function App() {
     <>
         <div className="bg-top">
         </div>
-        <TopBar/>
+        <TopBar title={'Wallet'}/>
     </>
 
   )
