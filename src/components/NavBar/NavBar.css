@@ -2,12 +2,17 @@
     position: fixed;
     z-index: 30;
     display: flex;
-    flex: row;
     flex-direction: row;
-    width: 100%;
-    bottom: 0;
+    width: 98%;
     justify-content: space-between;
     padding: 14px 30px;
+    box-shadow: 0px 0px 6px #bba8a8;
+    border-radius: 20px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    background-color: #f7f7f7;
 }
 
 .icon img{
