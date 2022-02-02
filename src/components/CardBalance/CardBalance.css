@@ -2,7 +2,7 @@
     position: relative;
     z-index: 30;
     background-color: #f7f7f7;
-    margin: 13vh auto;
+    margin: 36px auto 0px;
     width: 80%;
     display: flex;
     padding: 20px;
@@ -10,7 +10,6 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 20px;
-    box-shadow: 0px 4px 6px #bbb7b7;
 }
 .balance{
     font-family: 'Raleway', sans-serif;
@@ -22,6 +21,7 @@
 .balance h2{
     font-size: 30px;
     color: #160040;
+    font-family: 'Lato', sans-serif;
 }
 .balance span{
     margin-right: 5px;
@@ -35,7 +35,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 9px;
-    box-shadow: 1px 1px 4px #8d8d8d;
+    box-shadow: 1px 1px 2px #8d8d8d;
     cursor: pointer;
 }
 .add-icon img{
