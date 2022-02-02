@@ -1,0 +1,61 @@
+.card-new-transaction{
+    position: relative;
+    z-index: 30;
+    background-color: #f7f7f7;
+    margin: 36px auto 0px;
+    width: 90%;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px #8d8d8d;
+
+}
+.new-transaction{
+    font-family: 'Raleway', sans-serif;
+}
+.new-transaction p{
+    font-weight: 700;
+    font-size: 16px;
+    color: #c163b1;
+}
+
+.add-icon{
+    background-color: #9c0682;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    box-shadow: 1px 1px 2px #8d8d8d;
+    cursor: pointer;
+}
+
+.add-icon img{
+    width: 16px;
+    filter: invert(99%) sepia(4%) saturate(272%) hue-rotate(182deg) brightness(115%) contrast(94%);
+}
+
+.form-new-transaction{
+    position: relative;
+    z-index: 28;
+    width: 90%;
+    padding: 40px 20px;
+    margin: -20px auto 0px;
+    background-color: #f7f7f7;
+    border-radius:0 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+    box-shadow: 1px 1px 2px #8d8d8d;
+    transition: 0.5s;
+    height: 300px;
+}
+
+.form-new-transaction.hidden{
+    padding: 0px 20px;
+    height: 0px;
+}
