@@ -1,7 +1,7 @@
 import Background from "../Backgorund/Background";
 import CardBalance from "../CardBalance/CardBalance";
 import LastTransactions from "../LastTransactions/LastTransactions";
-import TopBar from '../TopBar/TopBar';
+import TopBar from "../TopBar/TopBar";
 import NavBar from "../NavBar/NavBar";
 
 const HomePage = () => {
