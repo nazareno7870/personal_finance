@@ -6,7 +6,6 @@ import './Login.css'
 
 const LoginForm = ()=>{
 const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
-
 const [email, setemail] = useState('')
 const [password, setpassword] = useState('')
 const [showError, setshowError] = useState(false)
@@ -30,13 +29,36 @@ const handleError = ()=>{
     }, 4000);
 }
 
+    const loginOk = user =>{
+        setemail('')
+        setpassword('')
+        window.localStorage.setItem('token',user.token)
+        window.localStorage.setItem('username',user.email)
+        navigate('/')
+    }
+
+    const submitLogin = async e=>{
+    e.preventDefault()
+    try {
+        const req = await axios.post(PATH+'/users/login',{
+            email,
+            password
+        })
+
+        if(req.data){
+            loginOk(req.data)
+        }
+
+    } catch (error) {
+        handleError()
+    }}
 
 
     return (  
 
     <>
         <div className="container">
-            <form className="login-form" >
+            <form className="login-form" onSubmit={submitLogin}>
                 <h3>Login Form</h3>
                 <div className="user-form">
                 <i className="far fa-envelope"></i>
@@ -49,7 +71,7 @@ const handleError = ()=>{
                 <button className="btn login">Login</button>
                 <button className="btn create-user" onClick={()=>navigate('/signup')}>Create User</button>
                 <div style={{opacity: showError ? '1':'0'}} className="error-login">
-                <p>User or Password wrongs</p>
+                <p>Email or Password wrongs</p>
                 </div>
             </form>
         </div>
