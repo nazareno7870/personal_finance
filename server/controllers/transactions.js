@@ -98,4 +98,22 @@ transactionRouter.post('/update',async(request,response)=>{
 
 })
 
+transactionRouter.post('/delete',async(request,response)=>{
+    const {body} = request
+    const {id_transaction} = body
+
+
+    const client = new pg.Client(connection);
+
+    try {
+        await client.connect();
+        const { rows } = await client.query('DELETE FROM public.transactions WHERE id_transaction = $1 RETURNING *;', [id_transaction]);
+        await client.end();
+        response.status(201).json(rows);
+    } catch (error) {
+        response.status(401).send(error)
+    }
+
+})
+
 module.exports = transactionRouter
