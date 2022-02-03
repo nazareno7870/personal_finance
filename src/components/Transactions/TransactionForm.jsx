@@ -4,7 +4,7 @@ import IconAdd from '../../assets/add-icon.svg'
 import axios from 'axios';
 
 
-const TransactionForm = () => {
+const TransactionForm = ({setswitchButton}) => {
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
     const [addIsVisible, setaddIsVisible] = useState(false);
     const [concept, setconcept] = useState('');
@@ -52,6 +52,8 @@ const TransactionForm = () => {
                 setshowBannerAdd(false)
             }, 1500);
             handleResetData()
+            setswitchButton('')
+            setswitchButton('debit')
         }).catch(error=>console.log(error))
 
     }

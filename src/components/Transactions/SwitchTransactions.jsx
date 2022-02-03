@@ -1,8 +1,6 @@
-import { useState } from "react";
 import CardTransactions from "./CardTransactions";
 
-const SwitchTransactions = () => {
-    const [switchButton, setswitchButton] = useState('debit');
+const SwitchTransactions = ({switchButton, setswitchButton}) => {
 
     return (
         <>
