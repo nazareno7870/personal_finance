@@ -8,7 +8,7 @@ transactionRouter.get('/all',async(request,response)=>{
     const query = `
     SELECT *
     FROM transactions
-    WHERE id_user = 1
+    WHERE user_id = 1
     ORDER BY
 	date DESC;
     `;
@@ -27,8 +27,8 @@ transactionRouter.get('/balance',async(request,response)=>{
     const client = new pg.Client(connection);
     const query = `
     SELECT *
-    FROM balance
-    WHERE id_user = 1
+    FROM balances
+    WHERE user_id = 1
     `;
     try {
         await client.connect();
