@@ -1,5 +1,8 @@
 import './LastTransactions.css'
+import useGetAllTransactions from './../../services/useGetAllTransactions';
 const LastTransactions = () => {
+    const {transactions} = useGetAllTransactions()
+    console.log(transactions)
     return (
     <div className="card-transactions">
         <div className="title"><h3>Last Transactions</h3></div>
