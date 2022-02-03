@@ -8,6 +8,7 @@ const transactionRouter = require('./controllers/transactions');
 
 app.use(cors())
 app.use(express.json())
+app.use('/', express.static('./dist'));
 app.use('/api/transactions',transactionRouter)
 
 app.listen(process.env.PORT ||3001)
