@@ -1,0 +1,96 @@
+.login-form{
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 1px 1px 4px #020001;
+    border-radius: 6px;
+    padding: 10px;
+    min-height: 500px;
+    position: relative;
+    z-index: 20;
+    background-image: url('/src/assets/background.svg');
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-form h3{
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 30px;
+    color: #ffffff;
+    letter-spacing: 3px;
+    margin-bottom: -20px;
+    
+}
+
+.input-form label{
+    font-size: 12px;
+}
+
+.login-form input{
+    width: 230px;
+    margin-top: 20px;
+    padding: 10px 44px;
+    outline: none;
+    border: 1px solid #bdb5b58c;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    color: #9c0682;
+    text-align: start;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: inset 1px 1px 1px #100b0b1f;
+    transition: .5s;
+}
+
+.login-form input::placeholder{
+    color: #bbbbbb;
+    text-align: start;
+}
+
+.login-form input:focus{
+    border: 1px solid #9c0682;
+}
+.user-form i{
+    position: absolute;
+    top: 32px;
+    left: 20px;
+    color: #9c0682;;
+}
+.or{
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    color: #959595;
+    margin-bottom: -20px;
+}
+.user-form{
+    position: relative;
+}
+
+
+.error-login{
+    color: red;
+    transition: .5s;
+    position: absolute;
+    top: 19px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn.login,.btn.create-user{
+    background-color: #892bef;
+    box-shadow: 0px 0px 4px #24222275;
+    padding: 14px 90px;
+}
+.btn.create-user{
+    padding: 10px 40px;
+    margin-bottom: 20px;
+}
