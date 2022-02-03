@@ -4,11 +4,13 @@ import HomePage from './components/HomePage/HomePage';
 import Transactions from './components/Transactions/Transactions';
 import LoginForm from './components/Login/Login';
 import CreatUser from './components/CreateUser/CreateUser';
+import { UserContextProvider } from './context/userContext';
 
 function App() {
 
   return (
     <>
+      <UserContextProvider>
         <Router>
           <Routes>
               <Route exact path="/transactions" element={<Transactions/>} />
@@ -17,6 +19,7 @@ function App() {
               <Route exact path="/" element={<HomePage/>} />
             </Routes>
         </Router>
+      </UserContextProvider>
     </>
 
   )
