@@ -3,8 +3,8 @@ import './CardBalance.css'
 import useGetBalance from './../../services/useGetBalance';
 import Spinner from './../Spinner/Spinner';
 
-const CardBalance = () => {
-    const {balance} = useGetBalance()
+const CardBalance = ({token}) => {
+    const {balance} = useGetBalance({token})
 
 
     return (

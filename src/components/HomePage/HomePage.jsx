@@ -3,14 +3,21 @@ import CardBalance from "../CardBalance/CardBalance";
 import LastTransactions from "../LastTransactions/LastTransactions";
 import TopBar from "../topBar/TopBar";
 import NavBar from "../NavBar/NavBar";
-
+import { useContext } from "react";
+import userContext from "../../context/userContext";
 const HomePage = () => {
+    const {user} = useContext(userContext)
+
     return (
         <>
             <Background/>
             <TopBar title={'Wallet'}/>
-            <CardBalance/>
-            <LastTransactions/>
+            <CardBalance
+            token={user.token}
+            />
+            <LastTransactions
+            token={user.token}
+            />
             <NavBar/>
         </>
 

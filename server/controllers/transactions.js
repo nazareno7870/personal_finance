@@ -1,7 +1,7 @@
 const transactionRouter = require('express').Router()
 const pg = require('pg');
 const connection = require('../postgres');
-
+const jwt = require('jsonwebtoken')
 
 transactionRouter.get('/last',async(request,response)=>{
     const client = new pg.Client(connection);
@@ -44,12 +44,17 @@ transactionRouter.get('/all',async(request,response)=>{
 
 })
 
-transactionRouter.get('/balance',async(request,response)=>{
+transactionRouter.post('/balance',async(request,response)=>{
+    const {body} = request
+    const {token} = body
+
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+
     const client = new pg.Client(connection);
     const query = `
     SELECT *
     FROM balances
-    WHERE user_id = 1
+    WHERE user_id = ${decodedToken.id}
     `;
     try {
         await client.connect();

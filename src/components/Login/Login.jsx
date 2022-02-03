@@ -1,14 +1,15 @@
-import {useState} from 'react'
+import {useState,useContext} from 'react'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import './Login.css'
-
+import userContext from '../../context/userContext'
 
 const LoginForm = ()=>{
 const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
 const [email, setemail] = useState('')
 const [password, setpassword] = useState('')
 const [showError, setshowError] = useState(false)
+const {user, setuser} = useContext(userContext);
 const navigate = useNavigate()
 
 
@@ -29,29 +30,30 @@ const handleError = ()=>{
     }, 4000);
 }
 
-    const loginOk = user =>{
-        setemail('')
-        setpassword('')
-        window.localStorage.setItem('token',user.token)
-        window.localStorage.setItem('username',user.email)
-        navigate('/')
+const loginOk = user =>{
+    setuser(user)
+    setemail('')
+    setpassword('')
+    window.localStorage.setItem('token',user.token)
+    window.localStorage.setItem('username',user.email)
+    navigate('/')
+}
+
+const submitLogin = async e=>{
+e.preventDefault()
+try {
+    const req = await axios.post(PATH+'/users/login',{
+        email,
+        password
+    })
+
+    if(req.data){
+        loginOk(req.data)
     }
 
-    const submitLogin = async e=>{
-    e.preventDefault()
-    try {
-        const req = await axios.post(PATH+'/users/login',{
-            email,
-            password
-        })
-
-        if(req.data){
-            loginOk(req.data)
-        }
-
-    } catch (error) {
-        handleError()
-    }}
+} catch (error) {
+    handleError()
+}}
 
 
     return (  

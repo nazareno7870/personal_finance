@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 
-const useGetBalance = () => {
+const useGetBalance = ({token}) => {
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
 
     
@@ -11,8 +11,15 @@ const useGetBalance = () => {
         const signal = controller.signal;
 
         window.fetch(PATH+`/transactions/balance`,{
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({token}),
             signal: signal
         })
+        
         .then(res => res.json())
         .then(data => setbalance(data))
         .catch((err) => {
