@@ -39,13 +39,13 @@
 }
 
 .form-new-transaction{
-    position: relative;
+    position: absolute;
     z-index: 28;
     width: 90%;
     padding: 40px 20px;
     margin: -20px auto 0px;
     background-color: #f7f7f7;
-    border-radius:0 0 20px 20px;
+    border-radius: 0 0 20px 20px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -53,6 +53,8 @@
     box-shadow: 1px 1px 2px #8d8d8d;
     transition: 0.5s;
     height: 280px;
+    left: 0;
+    right: 0;
 }
 
 .form-new-transaction.hidden{
@@ -138,6 +140,7 @@
     color: #c70808;
     margin-top: 6px;
 }
+
 .btn{
     margin: 10px auto 0;
     padding: 10px 40px;
@@ -148,7 +151,9 @@
     box-shadow: 1px 1px 2px #5e5959;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.5s;
 }
+
 .banner-add{
     position: absolute;
     z-index: 300;
@@ -166,4 +171,22 @@
     border-radius: 10px;
     justify-content: space-around;
     transition: 0.5s;
+}
+.card-switch{
+    position: relative;
+    z-index: 26;
+    background-color: #f7f7f7;
+    margin: 36px auto 0px;
+    width: 90%;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px #8d8d8d;
+}
+
+.btn.active{
+    box-shadow: inset 2px 2px 5px #420337;
+    background-color: #85066f;
 }
