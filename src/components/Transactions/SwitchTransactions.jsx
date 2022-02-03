@@ -2,15 +2,17 @@ import { useState } from "react";
 import CardTransactions from "./CardTransactions";
 
 const SwitchTransactions = () => {
-    const [switchButton, setswitchButton] = useState('Debits');
+    const [switchButton, setswitchButton] = useState('debit');
 
     return (
         <>
             <div className="card-switch">
-                <button onClick={()=>setswitchButton('Debits')} className={`btn ${switchButton === 'Debits' && 'active'}`}>Debits</button>
-                <button onClick={()=>setswitchButton('Credits')} className={`btn ${switchButton === 'Credits' && 'active'}`}>Credits</button>
+                <button onClick={()=>setswitchButton('debit')} className={`btn ${switchButton === 'debit' && 'active'}`}>Debits</button>
+                <button onClick={()=>setswitchButton('credit')} className={`btn ${switchButton === 'credit' && 'active'}`}>Credits</button>
             </div>
-            <CardTransactions/>
+            <CardTransactions
+            switchButton={switchButton}
+            />
         </>
     );
 }

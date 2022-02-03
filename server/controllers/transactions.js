@@ -80,4 +80,22 @@ transactionRouter.post('/new',async(request,response)=>{
 
 })
 
+transactionRouter.post('/update',async(request,response)=>{
+    const {body} = request
+    const {concept,amount,date,category,id_transaction} = body
+
+
+    const client = new pg.Client(connection);
+
+    try {
+        await client.connect();
+        const { rows } = await client.query('UPDATE public.transactions SET concept=$1, amount=$2, date=$3, category=$4 WHERE id_transaction = $5 RETURNING *;', [concept,amount,date,category,id_transaction]);
+        await client.end();
+        response.status(201).json(rows);
+    } catch (error) {
+        response.status(401).send(error)
+    }
+
+})
+
 module.exports = transactionRouter

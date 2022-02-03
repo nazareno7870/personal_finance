@@ -1,70 +1,80 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './CardTransactions.css'
 import CheckIcon from '../../assets/check-icon.svg'
 import TrashIcon from '../../assets/trash-icon.svg'
 import ChangeIcon from '../../assets/change-icon.svg'
-
-const object = {
-    concept:'Gasto',
-    category:'Comida',
-    type:'debit',
-    amount: '1500',
-    date: '2022-01-01'
-}
+import axios from "axios";
 
 
-const TransactionItem = () => {
-
+const TransactionItem = ({concept,category,type,amount,date,id}) => {
+    const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
     const [showModalChange, setshowModalChange] = useState(false);
-    const [concept, setconcept] = useState(object.concept);
-    const [category, setcategory] = useState(object.category);
-    const [type, settype] = useState(object.type);
-    const [amount, setamount] = useState(object.amount);
-    const [date, setdate] = useState(object.date);
+    const [conceptinput, setconceptinput] = useState(concept);
+    const [categoryinput, setcategoryinput] = useState(category);
+    const [amountinput, setamountinput] = useState(amount);
+    const [dateinput, setdateinput] = useState(date);
     const [errors, seterrors] = useState([]);
     const [showModalErrors, setshowModalErrors] = useState(false);
     const [showBannerAdd, setshowBannerAdd] = useState(false);
+    const [dateformat, setdateformat] = useState('');
 
-    
-    const handleType = e=>{
-        settype(e.target.value)
-    }
+    useEffect(()=>{
+        let yourDate = new Date(dateinput)
+        setdateinput(yourDate.toISOString().split('T')[0])
+        const elDate = new Date(dateinput)
+        const dateGMT = new Date(elDate.getTime()+10800000)
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        setdateformat(dateGMT.toLocaleDateString("es-ES", options))
+    },[dateinput,date])
+
 
     const handleConcept = e=>{
-        setconcept(e.target.value)
+        setconceptinput(e.target.value)
     }
 
     const handleCategory = e=>{
-        setcategory(e.target.value)
+        setcategoryinput(e.target.value)
     }
 
     const handleAmount = e=>{
-        setamount(e.target.value)
+        setamountinput(e.target.value)
     }
 
     const handleDate = e=>{
-        setdate(e.target.value)
+        setdateinput(e.target.value)
     }
 
-    const handleResetData = ()=>{
-        setaddIsVisible(false)
-        setTimeout(() => {
-            setconcept('')
-            setamount('')
-            setcategory('')
-            setdate('')
-            seterrors([])
-        }, 500);
+    const handleChange = ()=>{
+        setshowModalChange(true)
+    }
+
+
+    const sendUpadte = ()=>{
+        const obj = {
+            concept:conceptinput,
+            amount:amountinput,
+            date:dateinput,
+            category:categoryinput,
+            id_transaction:id
+            }
+
+        axios.post(PATH+'/transactions/update',obj).then(resp=>{
+            setshowBannerAdd(true)
+            setTimeout(() => {
+                setshowBannerAdd(false)
+            }, 1500);
+            setshowModalChange(false)
+        }).catch(error=>console.log(error))
 
     }
 
     const handleSubmit = e=>{
         e.preventDefault()
         let arrayErrors = []
-        !concept && arrayErrors.push('You must entry a concept')
-        !category && arrayErrors.push('You must entry a category')
-        !amount && arrayErrors.push('You must entry an amount')
-        !date && arrayErrors.push('You must entry a date')
+        !conceptinput && arrayErrors.push('You must entry a concept')
+        !categoryinput && arrayErrors.push('You must entry a category')
+        !amountinput && arrayErrors.push('You must entry an amount')
+        !dateinput && arrayErrors.push('You must entry a date')
 
         if(arrayErrors.length>=1){
             seterrors(arrayErrors)
@@ -73,31 +83,27 @@ const TransactionItem = () => {
                 setshowModalErrors(false)
             }, 2000);
         }else{
-            setshowBannerAdd(true)
-            setTimeout(() => {
-                setshowBannerAdd(false)
-            }, 1500);
-            handleResetData()
+            sendUpadte()
         }
     }
 
     return (
         <>
 
-        <div className="item-transaction">
+        <div className="item-transaction" id={id} key={id}>
             <div className="container-left">
                 <div className="icons-item">
                     <img src={TrashIcon} alt="Trash Icon" />
-                    <img src={ChangeIcon} alt="Modify Icon" />
+                    <img src={ChangeIcon} onClick={handleChange} alt="Modify Icon" />
                 </div>
                 <div className="info-transaction">
-                    <h3>{object.concept}</h3>
-                    <p>{object.date}</p>
+                    <h3>{conceptinput}</h3>
+                    <p>{dateformat}</p>
                 </div>
             </div>
 
-            <div className="amount-transaction outflow">
-                <h3>${object.amount}</h3>
+            <div className={`amount-transaction ${type === 'debit' ? 'outflow': 'entry'}`}>
+                <h3>{type === 'debit' ? '-': '+'}${amountinput}</h3>
             </div>
         </div>
         
@@ -107,19 +113,19 @@ const TransactionItem = () => {
                         <form className={`form-modify-transaction`}>
                             <div className="item-new-transaction" >
                                 <label >Concept</label>
-                                <input style={{borderBottom: concept === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={concept} onChange={handleConcept} type={'text'} />
+                                <input style={{borderBottom: conceptinput === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={conceptinput} onChange={handleConcept} type={'text'} />
                             </div>
                             <div className="item-new-transaction">
                                 <label >Category</label>
-                                <input style={{borderBottom: category === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={category} onChange={handleCategory} type={'text'} />
+                                <input style={{borderBottom: categoryinput === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={categoryinput} onChange={handleCategory} type={'text'} />
                             </div>
                             <div className="item-new-transaction">
                                 <label >Amount $</label>
-                                <input style={{borderBottom: amount === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={amount} onChange={handleAmount} type={'number'} />
+                                <input style={{borderBottom: amountinput === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={amountinput} onChange={handleAmount} type={'number'} />
                             </div>
                             <div className="item-new-transaction">
                                 <label >Date</label>
-                                <input style={{borderBottom: date === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={date} onChange={handleDate} type={'date'} />
+                                <input style={{borderBottom: dateinput === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={dateinput} onChange={handleDate} type={'date'} />
                             </div>
 
                             <button className='btn' onClick={handleSubmit}>Change</button>
@@ -137,7 +143,7 @@ const TransactionItem = () => {
             </div>}
 
             <div className="banner-add" style={{opacity: showBannerAdd ? 1 : 0}}>
-                <p>Transaction created successfully</p>
+                <p>Change successfully</p>
                 <img src={CheckIcon} alt="Check Icon" />
             </div>
     </>

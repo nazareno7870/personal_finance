@@ -47,7 +47,6 @@ const TransactionForm = () => {
             }
 
         axios.post(PATH+'/transactions/new',obj).then(resp=>{
-            console.log(resp)
             setshowBannerAdd(true)
             setTimeout(() => {
                 setshowBannerAdd(false)

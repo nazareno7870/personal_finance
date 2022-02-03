@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 
-const useGetAllTransactions = () => {
+const useGetAllTransactions = ({filter}) => {
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
 
     
@@ -24,7 +24,7 @@ const useGetAllTransactions = () => {
           });
         return () => controller.abort();
         
-    }, []);
+    }, [filter]);
 
     return ({transactions,settransactions});
 }
