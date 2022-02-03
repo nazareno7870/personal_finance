@@ -8,6 +8,27 @@ transactionRouter.get('/all',async(request,response)=>{
     const query = `
     SELECT *
     FROM transactions
+    WHERE id_user = 1
+    ORDER BY
+	date DESC;
+    `;
+    try {
+        await client.connect();
+        const { rows } = await client.query(query);
+        await client.end();
+        response.status(201).json(rows);
+    } catch (error) {
+        response.status(401).send(error)
+    }
+
+})
+
+transactionRouter.get('/balance',async(request,response)=>{
+    const client = new pg.Client(connection);
+    const query = `
+    SELECT *
+    FROM balance
+    WHERE id_user = 1
     `;
     try {
         await client.connect();
