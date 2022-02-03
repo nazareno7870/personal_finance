@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 
-const useGetAllTransactions = ({filter}) => {
+const useGetAllTransactions = ({filter,token}) => {
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
 
     
@@ -11,6 +11,12 @@ const useGetAllTransactions = ({filter}) => {
         const signal = controller.signal;
 
         window.fetch(PATH+`/transactions/all`,{
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({token}),
             signal: signal
         })
         .then(res => res.json())

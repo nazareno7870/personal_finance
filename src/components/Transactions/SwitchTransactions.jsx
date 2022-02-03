@@ -1,6 +1,6 @@
 import CardTransactions from "./CardTransactions";
 
-const SwitchTransactions = ({switchButton, setswitchButton}) => {
+const SwitchTransactions = ({switchButton, setswitchButton,token}) => {
 
     return (
         <>
@@ -9,6 +9,7 @@ const SwitchTransactions = ({switchButton, setswitchButton}) => {
                 <button onClick={()=>setswitchButton('credit')} className={`btn ${switchButton === 'credit' && 'active'}`}>Credits</button>
             </div>
             <CardTransactions
+            token={token}
             switchButton={switchButton}
             />
         </>

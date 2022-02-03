@@ -3,8 +3,8 @@ import useGetAllTransactions from './../../services/useGetAllTransactions';
 import { useEffect, useState } from 'react';
 import Spinner from "../Spinner/Spinner";
 
-const CardTransactions = ({switchButton}) => {
-    const {transactions} = useGetAllTransactions({filter:switchButton})
+const CardTransactions = ({switchButton,token}) => {
+    const {transactions} = useGetAllTransactions({filter:switchButton,token})
     const [transactionsfiltered, settransactionsfiltered] = useState([]);
     useEffect(()=>{
         const filter = transactions.filter(el=> el.type === switchButton)
