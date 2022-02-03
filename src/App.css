@@ -14,3 +14,11 @@ p{
     position: relative;
     z-index: 10;
 }
+input,
+textarea,
+button,
+select,
+div,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
