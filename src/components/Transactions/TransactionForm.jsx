@@ -105,7 +105,7 @@ const TransactionForm = () => {
                     <input style={{borderBottom: date === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={date} onChange={handleDate} type={'date'} />
                 </div>
 
-                <button className='btn' onClick={handleSubmit}>Submit</button>
+                <button className='btn' onClick={handleSubmit}>Add</button>
 
             </form>
 
