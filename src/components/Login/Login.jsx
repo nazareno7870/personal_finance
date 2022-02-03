@@ -39,7 +39,7 @@ const handleError = ()=>{
             <form className="login-form" >
                 <h3>Login Form</h3>
                 <div className="user-form">
-                <i class="far fa-envelope"></i>
+                <i className="far fa-envelope"></i>
                 <input type={'email'} placeholder="Email" onChange={handleChangeEmail} value={email}></input>
                 </div>
                 <div className="user-form">

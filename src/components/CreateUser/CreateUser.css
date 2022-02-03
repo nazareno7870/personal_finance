@@ -97,7 +97,12 @@
     }
   }
 .login-form.create-user p{
-    font-size: 26px;
-    font-weight: 800;
-    color: #9f1147;
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 60px;
+}
+.btn.create-user.exit{
+  margin-bottom: 60px;
 }
