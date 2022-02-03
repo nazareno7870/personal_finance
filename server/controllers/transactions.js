@@ -3,12 +3,17 @@ const pg = require('pg');
 const connection = require('../postgres');
 const jwt = require('jsonwebtoken')
 
-transactionRouter.get('/last',async(request,response)=>{
+transactionRouter.post('/last',async(request,response)=>{
+    const {body} = request
+    const {token} = body
+
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+
     const client = new pg.Client(connection);
     const query = `
     SELECT *
     FROM transactions
-    WHERE user_id = 1
+    WHERE user_id = ${decodedToken.id}
     ORDER BY
 	date DESC
     LIMIT 10;
