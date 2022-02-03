@@ -1,9 +1,11 @@
 import CheckIcon from '../../assets/check-icon.svg'
 import { useState } from 'react';
 import IconAdd from '../../assets/add-icon.svg'
+import axios from 'axios';
 
 
 const TransactionForm = () => {
+    const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
     const [addIsVisible, setaddIsVisible] = useState(false);
     const [concept, setconcept] = useState('');
     const [category, setcategory] = useState('');
@@ -34,6 +36,27 @@ const TransactionForm = () => {
         setdate(e.target.value)
     }
 
+    const sendData = ()=>{
+        const obj = {
+            concept,
+            amount,
+            date,
+            type,
+            user_id:1,
+            category
+            }
+
+        axios.post(PATH+'/transactions/new',obj).then(resp=>{
+            console.log(resp)
+            setshowBannerAdd(true)
+            setTimeout(() => {
+                setshowBannerAdd(false)
+            }, 1500);
+            handleResetData()
+        }).catch(error=>console.log(error))
+
+    }
+
     const handleResetData = ()=>{
         setaddIsVisible(false)
         setTimeout(() => {
@@ -61,11 +84,7 @@ const TransactionForm = () => {
                 setshowModalErrors(false)
             }, 2000);
         }else{
-            setshowBannerAdd(true)
-            setTimeout(() => {
-                setshowBannerAdd(false)
-            }, 1500);
-            handleResetData()
+            sendData()
         }
     }
 
