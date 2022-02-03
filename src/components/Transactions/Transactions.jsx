@@ -3,6 +3,7 @@ import NavBar from '../NavBar/NavBar';
 import './Transactions.css'
 import TopBar from '../topBar/TopBar';
 import TransactionForm from './TransactionForm';
+import SwitchTransactions from './SwitchTransactions';
 
 
 const Transactions = () => {
@@ -12,6 +13,7 @@ const Transactions = () => {
                 <Background/>
                 <TopBar title={'Transactions'}/>
                 <TransactionForm/>
+                <SwitchTransactions/>
                 <NavBar/>
             </>
     );
