@@ -60,12 +60,12 @@
     position: absolute;
     top: 32px;
     left: 20px;
-    color: #9c0682;;
+    color: #9c0682;
 }
 .or{
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
-    color: #959595;
+    color: rgb(213 213 213);
     margin-bottom: -20px;
 }
 .user-form{
