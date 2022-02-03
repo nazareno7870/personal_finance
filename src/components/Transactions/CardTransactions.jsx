@@ -1,6 +1,7 @@
 import TransactionItem from "./TransactionItem";
 import useGetAllTransactions from './../../services/useGetAllTransactions';
 import { useEffect, useState } from 'react';
+import Spinner from "../Spinner/Spinner";
 
 const CardTransactions = ({switchButton}) => {
     const {transactions} = useGetAllTransactions({filter:switchButton})
@@ -28,7 +29,7 @@ const CardTransactions = ({switchButton}) => {
                 />
             )
             })
-            :<></>
+            :<Spinner/>
         }
 
         </div>

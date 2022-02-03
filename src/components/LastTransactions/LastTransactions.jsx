@@ -1,5 +1,6 @@
 import './LastTransactions.css'
 import useGetLastTransactions from '../../services/useGetLastTransactions';
+import Spinner from '../Spinner/Spinner';
 const LastTransactions = () => {
     const {transactions} = useGetLastTransactions()
 
@@ -24,7 +25,7 @@ const LastTransactions = () => {
                 </div>
             )
             })
-            :<></>
+            :<Spinner/>
         }
 
 

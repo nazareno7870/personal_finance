@@ -93,8 +93,8 @@ const TransactionForm = () => {
                 <div className="new-transaction">
                     <p>New Transaction</p>
                 </div>
-                    <div className="add-icon">
-                        <img onClick={()=>setaddIsVisible(prev=>!prev)} src={IconAdd} alt="Add Icon" />
+                    <div className="add-icon" onClick={()=>setaddIsVisible(prev=>!prev)}>
+                        <img src={IconAdd} alt="Add Icon" />
                     </div>
             </div>
 
