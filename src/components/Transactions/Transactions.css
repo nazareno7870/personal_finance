@@ -155,7 +155,7 @@
 }
 
 .banner-add{
-    position: absolute;
+    position: fixed;
     z-index: 300;
     top: 20px;
     left: 0;

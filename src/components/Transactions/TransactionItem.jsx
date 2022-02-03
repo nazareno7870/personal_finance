@@ -1,6 +1,8 @@
 import { useState } from "react";
 import './CardTransactions.css'
 import CheckIcon from '../../assets/check-icon.svg'
+import TrashIcon from '../../assets/trash-icon.svg'
+import ChangeIcon from '../../assets/change-icon.svg'
 
 const object = {
     concept:'Gasto',
@@ -83,14 +85,22 @@ const TransactionItem = () => {
         <>
 
         <div className="item-transaction">
-            <div className="info-transaction">
-                <h3>{object.concept}</h3>
-                <p>{object.date}</p>
+            <div className="container-left">
+                <div className="icons-item">
+                    <img src={TrashIcon} alt="Trash Icon" />
+                    <img src={ChangeIcon} alt="Modify Icon" />
+                </div>
+                <div className="info-transaction">
+                    <h3>{object.concept}</h3>
+                    <p>{object.date}</p>
+                </div>
             </div>
+
             <div className="amount-transaction outflow">
                 <h3>${object.amount}</h3>
             </div>
         </div>
+        
         {showModalChange 
         ?        <div className={"modal-container"}>
                     <div className="modal-item">
