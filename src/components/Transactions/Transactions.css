@@ -190,3 +190,29 @@
     box-shadow: inset 2px 2px 5px #420337;
     background-color: #85066f;
 }
+
+.modal-delete{
+    background-color: #f7f7f7;
+    width: 80%;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.btn.delete{
+    background-color: #bd0202;
+    margin-right: 20px;
+}
+
+.btn.nodelete{
+    background-color: #02bd44;
+}
+.modal-delete p{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    padding: 20px;
+    color: #4f006d;
+    font-weight: 700;
+}

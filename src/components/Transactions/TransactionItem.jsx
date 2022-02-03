@@ -17,6 +17,8 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
     const [showModalErrors, setshowModalErrors] = useState(false);
     const [showBannerAdd, setshowBannerAdd] = useState(false);
     const [dateformat, setdateformat] = useState('');
+    const [isDelete, setisDelete] = useState(false);
+    const [showModalDelete, setshowModalDelete] = useState(false);
 
     useEffect(()=>{
         let yourDate = new Date(dateinput)
@@ -48,6 +50,9 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
         setshowModalChange(true)
     }
 
+    const handleDelete = ()=>{
+        setshowModalDelete(true)
+    }
 
     const sendUpadte = ()=>{
         const obj = {
@@ -66,6 +71,17 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
             setshowModalChange(false)
         }).catch(error=>console.log(error))
 
+    }
+
+    const handleConfirmDelete = ()=>{
+        const obj = {
+            id_transaction:id
+            }
+
+        axios.post(PATH+'/transactions/delete',obj).then(resp=>{
+            setisDelete(true)
+            setshowModalDelete(false)
+        }).catch(error=>console.log(error))
     }
 
     const handleSubmit = e=>{
@@ -89,23 +105,25 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
 
     return (
         <>
-
-        <div className="item-transaction" id={id} key={id}>
-            <div className="container-left">
-                <div className="icons-item">
-                    <img src={TrashIcon} alt="Trash Icon" />
-                    <img src={ChangeIcon} onClick={handleChange} alt="Modify Icon" />
+        {!isDelete && 
+                    <div className="item-transaction" id={id} key={id}>
+                    <div className="container-left">
+                        <div className="icons-item">
+                            <img src={TrashIcon} onClick={handleDelete} alt="Trash Icon" />
+                            <img src={ChangeIcon} onClick={handleChange} alt="Modify Icon" />
+                        </div>
+                        <div className="info-transaction">
+                            <h3>{conceptinput}</h3>
+                            <p>{dateformat}</p>
+                        </div>
+                    </div>
+        
+                    <div className={`amount-transaction ${type === 'debit' ? 'outflow': 'entry'}`}>
+                        <h3>{type === 'debit' ? '-': '+'}${amountinput}</h3>
+                    </div>
                 </div>
-                <div className="info-transaction">
-                    <h3>{conceptinput}</h3>
-                    <p>{dateformat}</p>
-                </div>
-            </div>
+        }
 
-            <div className={`amount-transaction ${type === 'debit' ? 'outflow': 'entry'}`}>
-                <h3>{type === 'debit' ? '-': '+'}${amountinput}</h3>
-            </div>
-        </div>
         
         {showModalChange 
         ?        <div className={"modal-container"}>
@@ -142,8 +160,19 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
                 </div>
             </div>}
 
+            {showModalDelete && 
+            <div className="modal-container">
+                <div className="modal-delete">
+                    <p>Are you sure you want to delete the transaction?</p>
+                    <div className="buttons-modal">
+                        <button onClick={handleConfirmDelete} className="btn delete">YES</button>
+                        <button onClick={()=>setshowModalDelete(false)} className="btn nodelete">NO</button>
+                    </div>
+                </div>
+            </div>}
+
             <div className="banner-add" style={{opacity: showBannerAdd ? 1 : 0}}>
-                <p>Change successfully</p>
+                <p>Create successfully</p>
                 <img src={CheckIcon} alt="Check Icon" />
             </div>
     </>
