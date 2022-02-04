@@ -4,13 +4,13 @@ import useGetBalance from './../../services/useGetBalance';
 import Spinner from './../Spinner/Spinner';
 
 const CardBalance = ({token}) => {
-    const {balance} = useGetBalance({token})
+    const {balance,loading} = useGetBalance({token})
 
 
     return (
         
         <div className="card-balance">
-            {balance[0] 
+            {!loading 
             ?   <>
                     <div className="balance">
                         <p>Your Balance</p>

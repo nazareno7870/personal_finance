@@ -2,10 +2,9 @@ import { useEffect,useState } from "react";
 
 const useGetLastTransactions = ({token}) => {
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
-
-    
     const [transactions, settransactions] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setloading] = useState(true);
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
@@ -20,7 +19,10 @@ const useGetLastTransactions = ({token}) => {
             signal: signal
         })
         .then(res => res.json())
-        .then(data => settransactions(data))
+        .then(data => {
+          settransactions(data)
+          setloading(false)
+        })
         .catch((err) => {
             if (err.name === "AbortError") {
               console.log("successfully aborted");
@@ -32,7 +34,7 @@ const useGetLastTransactions = ({token}) => {
         
     }, []);
 
-    return ({transactions,settransactions});
+    return ({transactions,settransactions,loading});
 }
 
 export default useGetLastTransactions;

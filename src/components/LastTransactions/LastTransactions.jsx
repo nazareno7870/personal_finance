@@ -2,13 +2,13 @@ import './LastTransactions.css'
 import useGetLastTransactions from '../../services/useGetLastTransactions';
 import Spinner from '../Spinner/Spinner';
 const LastTransactions = ({token}) => {
-    const {transactions} = useGetLastTransactions({token})
+    const {transactions,loading} = useGetLastTransactions({token})
 
     return (
     <div className="card-transactions">
         <div className="title"><h3>Last Transactions</h3></div>
-        {transactions[0]?.concept?
-            transactions.map(el=>{
+        {!loading
+            ?   transactions.map(el=>{
                 const elDate = new Date(el.date)
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
                 const date = elDate.toLocaleDateString("es-ES", options)

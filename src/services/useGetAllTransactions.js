@@ -1,11 +1,10 @@
 import { useEffect,useState } from "react";
 
 const useGetAllTransactions = ({filter,token}) => {
-    const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
-
-    
+    const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD;  
     const [transactions, settransactions] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setloading] = useState(true);
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
@@ -20,7 +19,9 @@ const useGetAllTransactions = ({filter,token}) => {
             signal: signal
         })
         .then(res => res.json())
-        .then(data => settransactions(data))
+        .then(data => {
+          settransactions(data)
+          setloading(false)})
         .catch((err) => {
             if (err.name === "AbortError") {
               console.log("successfully aborted");
@@ -32,7 +33,7 @@ const useGetAllTransactions = ({filter,token}) => {
         
     }, [filter]);
 
-    return ({transactions,settransactions});
+    return ({transactions,settransactions,loading});
 }
 
 export default useGetAllTransactions;

@@ -6,7 +6,7 @@ import useIsLogin from "../../services/useIsLogin";
 
 const CardTransactions = ({switchButton,token}) => {
     useIsLogin()
-    const {transactions} = useGetAllTransactions({filter:switchButton,token})
+    const {transactions,loading} = useGetAllTransactions({filter:switchButton,token})
     const [transactionsfiltered, settransactionsfiltered] = useState([]);
     useEffect(()=>{
         const filter = transactions.filter(el=> el.type === switchButton)
@@ -16,7 +16,7 @@ const CardTransactions = ({switchButton,token}) => {
     return (
         <div className="card-transactions">
             <div className="title"><h3>Transactions</h3></div>
-            {transactionsfiltered[0]?.concept?
+            {!loading?
             transactionsfiltered.map(el=>{
                
             return(
