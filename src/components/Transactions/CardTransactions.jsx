@@ -8,6 +8,7 @@ const CardTransactions = ({switchButton,token}) => {
     useIsLogin()
     const {transactions,loading} = useGetAllTransactions({filter:switchButton,token})
     const [transactionsfiltered, settransactionsfiltered] = useState([]);
+    
     useEffect(()=>{
         const filter = transactions.filter(el=> el.type === switchButton)
         settransactionsfiltered(filter)

@@ -11,7 +11,7 @@ const NavBar = () => {
         <nav className="navbar">
             <div className={`icon ${location.pathname === '/' ? 'active' : ''}`} onClick={()=>navigate('/')}><img src={HomeIcon} alt="Home Icon" /></div>
             <div className={`icon ${location.pathname === '/transactions' ? 'active' : ''}`} onClick={()=>navigate('/transactions')}><img src={AddTransaction} alt="Transaction Icon" /></div>
-            <div className="icon"><img src={StatisticsIcon} alt="Statistics Icon" /></div>
+            <div className={`icon ${location.pathname === '/statistics' ? 'active' : ''}`} onClick={()=>navigate('/statistics')}><img src={StatisticsIcon} alt="Statistics Icon" /></div>
             <div className="icon"><img src={UserIcon} alt="User Icon" /></div>
         </nav>
     );

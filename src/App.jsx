@@ -5,6 +5,7 @@ import Transactions from './components/Transactions/Transactions';
 import LoginForm from './components/Login/Login';
 import CreatUser from './components/CreateUser/CreateUser';
 import { UserContextProvider } from './context/userContext';
+import Statistics from './components/Statistics/Statistics';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
               <Route exact path="/transactions" element={<Transactions/>} />
               <Route exact path="/login" element={<LoginForm/>} />
               <Route exact path="/signup" element={<CreatUser/>} />
+              <Route exact path="/statistics" element={<Statistics/>} />
               <Route exact path="/" element={<HomePage/>} />
             </Routes>
         </Router>

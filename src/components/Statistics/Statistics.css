@@ -1,0 +1,14 @@
+.categories{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-switch.card-categories{
+    z-index: 30;
+}
+
+.btn.categories{
+    width: 80%;
+}
