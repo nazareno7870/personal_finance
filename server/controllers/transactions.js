@@ -7,18 +7,19 @@ transactionRouter.post('/last',async(request,response)=>{
     const {body} = request
     const {token} = body
 
-    const decodedToken = jwt.verify(token, process.env.SECRET)
 
-    const client = new pg.Client(connection);
-    const query = `
-    SELECT *
-    FROM transactions
-    WHERE user_id = ${decodedToken.id}
-    ORDER BY
-	date DESC
-    LIMIT 10;
-    `;
     try {
+        const decodedToken = jwt.verify(token, process.env.SECRET)
+
+        const client = new pg.Client(connection);
+        const query = `
+        SELECT *
+        FROM transactions
+        WHERE user_id = ${decodedToken.id}
+        ORDER BY
+        date DESC
+        LIMIT 10;
+        `;
         await client.connect();
         const { rows } = await client.query(query);
         await client.end();
@@ -33,16 +34,17 @@ transactionRouter.post('/all',async(request,response)=>{
     const {body} = request
     const {token} = body
 
-    const decodedToken = jwt.verify(token, process.env.SECRET)
-    const client = new pg.Client(connection);
-    const query = `
-    SELECT *
-    FROM transactions
-    WHERE user_id = ${decodedToken.id}
-    ORDER BY
-	date DESC;
-    `;
+
     try {
+        const decodedToken = jwt.verify(token, process.env.SECRET)
+        const client = new pg.Client(connection);
+        const query = `
+        SELECT *
+        FROM transactions
+        WHERE user_id = ${decodedToken.id}
+        ORDER BY
+        date DESC;
+        `;
         await client.connect();
         const { rows } = await client.query(query);
         await client.end();
@@ -57,15 +59,16 @@ transactionRouter.post('/balance',async(request,response)=>{
     const {body} = request
     const {token} = body
 
-    const decodedToken = jwt.verify(token, process.env.SECRET)
 
-    const client = new pg.Client(connection);
-    const query = `
-    SELECT *
-    FROM balances
-    WHERE user_id = ${decodedToken.id}
-    `;
     try {
+        const decodedToken = jwt.verify(token, process.env.SECRET)
+
+        const client = new pg.Client(connection);
+        const query = `
+        SELECT *
+        FROM balances
+        WHERE user_id = ${decodedToken.id}
+        `;
         await client.connect();
         const { rows } = await client.query(query);
         await client.end();

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import './Login.css'
 import userContext from '../../context/userContext'
+import useLogin from '../../services/useLogin'
 
 const LoginForm = ()=>{
 const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
@@ -11,6 +12,7 @@ const [password, setpassword] = useState('')
 const [showError, setshowError] = useState(false)
 const {user, setuser} = useContext(userContext);
 const navigate = useNavigate()
+useLogin()
 
 
  
@@ -35,7 +37,7 @@ const loginOk = user =>{
     setemail('')
     setpassword('')
     window.localStorage.setItem('token',user.token)
-    window.localStorage.setItem('username',user.email)
+    window.localStorage.setItem('email',user.email)
     navigate('/')
 }
 

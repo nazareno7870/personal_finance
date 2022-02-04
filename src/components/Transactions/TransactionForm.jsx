@@ -1,10 +1,11 @@
 import CheckIcon from '../../assets/check-icon.svg'
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import IconAdd from '../../assets/add-icon.svg'
 import axios from 'axios';
-
+import userContext from "../../context/userContext";
 
 const TransactionForm = ({setswitchButton}) => {
+    const {user} = useContext(userContext)
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
     const [addIsVisible, setaddIsVisible] = useState(false);
     const [concept, setconcept] = useState('');
@@ -42,7 +43,7 @@ const TransactionForm = ({setswitchButton}) => {
             amount,
             date,
             type,
-            user_id:1,
+            user_id:user.id,
             category
             }
 

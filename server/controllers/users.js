@@ -88,4 +88,48 @@ usersRouter.post('/createuser', async (request, response) => {
 
     })
 
+    usersRouter.post('/exist', async (request, response) => {
+        try {
+          const { body } = request
+          const { email, token } = body
+          if(email === null || token === null || email === 'undefined'){
+      
+            return response.status(401).json({
+              error: 'invalid email or token'
+            })
+          }
+      
+          const decodedToken = jwt.verify(token, process.env.SECRET)
+
+          if (!token || !decodedToken.id) {
+            return response.status(401).json({ error: 'invalid email or token' })
+          }
+        
+          const { email: emaildecod} = decodedToken
+      
+          if(email.toLowerCase() === emaildecod){
+            const client = new pg.Client(connection);
+            await client.connect();
+            const { rows } = await client.query('SELECT id_user, mail, password, name, date FROM public.users WHERE mail LIKE $1 ;', [emaildecod]);
+            await client.end();
+
+            response.send({
+                id: rows[0].id_user,
+                email: rows[0].mail,
+                token
+            })
+          }else{
+            return response.status(401).json({ error: 'invalid email or token' })
+          }
+      
+        } catch (error) {
+          response.status(401).json({})
+    
+        }
+    
+    
+        
+      })
+
+
 module.exports = usersRouter
