@@ -19,7 +19,7 @@
    .card-switch.card-categories{
        display: none;
    }
-   .form-new-transaction.categories.hidden,.form-new-transaction.categories{
+   .form-new-transaction.mobile.hidden,.form-new-transaction.mobile{
        display: none;
    }
    .form-new-transaction.categories-desktop{
