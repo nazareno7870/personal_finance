@@ -204,6 +204,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 420px;
 }
 .btn.delete{
     background-color: #bd0202;

@@ -36,10 +36,14 @@ The application has the following functionalities:
 
 ### Screenshot
 
-![](screenshot-mobile-creatPost.jpg)
-![](screenshot-mobile-menuResponsive.jpg)
-![](screenshot-mobile-tags.jpg)
-![](screenshot-mobile.jpg)
+![](mobile-login.jpg)
+![](mobile-signup.jpg)
+![](mobile-wallet.jpg)
+![](mobile-addTransaction.jpg)
+![](desktop-home.jpg)
+![](desktop-new-transaction.jpg)
+![](desktop-stats.jpg)
+
 
 
 ### Links
