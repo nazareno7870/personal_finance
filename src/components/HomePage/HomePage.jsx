@@ -5,9 +5,12 @@ import TopBar from "../topBar/TopBar";
 import NavBar from "../NavBar/NavBar";
 import { useContext } from "react";
 import userContext from "../../context/userContext";
+import useIsLogin from "../../services/useIsLogin";
+
 const HomePage = () => {
     const {user} = useContext(userContext)
-
+    useIsLogin()
+    
     return (
         <>
             <Background/>
