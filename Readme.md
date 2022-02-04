@@ -23,15 +23,15 @@ This Single Page Application, created from scratch, is a challenge proposed by A
 
 The application has the following functionalities:
 
--User register
--User login
--Log Out
--Current balance of personal accounts (Home Page)
--Last 10 transactions (Home Page)
--Add transactions (Transactions Page)
--Filter by type of transaction (Transactions Page)
--Modify or delete transaction (Transactions Page)
--Filter by categories (Statistics Page)
+- User register 
+- User login 
+- Log Out 
+- Current balance of personal accounts (Home Page) 
+- Last 10 transactions (Home Page) 
+- Add transactions (Transactions Page) 
+- Filter by type of transaction (Transactions Page) 
+- Modify or delete transaction (Transactions Page) 
+- Filter by categories (Statistics Page) 
 
 
 ### Screenshot
