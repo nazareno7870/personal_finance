@@ -65,7 +65,7 @@ const Statistics = () => {
                     <div className={`form-new-transaction categories ${showcategories ? '' : 'hidden'}`} style={{height:showcategories?`${categories.length*70}px`:'0px',minHeight:showcategories?'100px':'0px'}}>
                         <div className="categories"> 
                         {categories.map(cat=>{
-                                    return(<button onClick={handleFilter} className={`btn categories ${filter===cat ? 'active' : ''}`}>{cat}</button>)
+                                    return(<button key={cat} onClick={handleFilter} className={`btn categories ${filter===cat ? 'active' : ''}`}>{cat}</button>)
                                 })}
                         </div>
                     </div>
@@ -74,7 +74,7 @@ const Statistics = () => {
                     {!loading 
                     ?<div className="categories"> 
                         {categories.map(cat=>{
-                                    return(<button onClick={handleFilter} className={`btn categories ${filter===cat ? 'active' : ''}`}>{cat}</button>)
+                                    return(<button key={cat} onClick={handleFilter} className={`btn categories ${filter===cat ? 'active' : ''}`}>{cat}</button>)
                                 })}
                      </div>
                      :<Spinner/>}
