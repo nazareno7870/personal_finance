@@ -11,6 +11,7 @@ import SideBar from '../SideBar/SideBar';
 const Transactions = () => {
     const {user} = useContext(userContext)
     const [switchButton, setswitchButton] = useState('debit');
+    const [modalActive, setmodalActive] = useState(false);
     return (
             <>
                 <Background/>
@@ -25,11 +26,13 @@ const Transactions = () => {
                         <TopBar title={'Transactions'}/>
                         <TransactionForm
                         setswitchButton={setswitchButton}
+                        modalActive={modalActive}
                         />
                         <SwitchTransactions
                         token={user.token}
                         switchButton={switchButton}
                         setswitchButton={setswitchButton}
+                        setmodalActive={setmodalActive}
                         />
                     </div>
                 </div>

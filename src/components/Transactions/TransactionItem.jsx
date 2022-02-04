@@ -6,7 +6,7 @@ import ChangeIcon from '../../assets/change-icon.svg'
 import axios from "axios";
 
 
-const TransactionItem = ({concept,category,type,amount,date,id}) => {
+const TransactionItem = ({concept,category,type,amount,date,id,setmodalActive}) => {
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
     const [showModalChange, setshowModalChange] = useState(false);
     const [conceptinput, setconceptinput] = useState(concept);
@@ -48,10 +48,12 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
 
     const handleChange = ()=>{
         setshowModalChange(true)
+        setmodalActive(true)
     }
 
     const handleDelete = ()=>{
         setshowModalDelete(true)
+        setmodalActive(true)
     }
 
     const sendUpadte = ()=>{
@@ -69,7 +71,8 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
                 setshowBannerAdd(false)
             }, 1500);
             setshowModalChange(false)
-        }).catch(error=>console.log(error))
+            setmodalActive(false)
+        }).catch(error=>setmodalActive(false))
 
     }
 
@@ -81,7 +84,8 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
         axios.post(PATH+'/transactions/delete',obj).then(resp=>{
             setisDelete(true)
             setshowModalDelete(false)
-        }).catch(error=>console.log(error))
+            setmodalActive(false)
+        }).catch(error=>setmodalActive(false))
     }
 
     const handleSubmit = e=>{
@@ -166,7 +170,7 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
                     <p>Are you sure you want to delete the transaction?</p>
                     <div className="buttons-modal">
                         <button onClick={handleConfirmDelete} className="btn delete">YES</button>
-                        <button onClick={()=>setshowModalDelete(false)} className="btn nodelete">NO</button>
+                        <button onClick={()=>{setshowModalDelete(false);setmodalActive(false)}} className="btn nodelete">NO</button>
                     </div>
                 </div>
             </div>}

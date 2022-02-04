@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Spinner from "../Spinner/Spinner";
 import useIsLogin from "../../services/useIsLogin";
 
-const CardTransactions = ({switchButton,token}) => {
+const CardTransactions = ({switchButton,token,setmodalActive}) => {
     useIsLogin()
     const {transactions,loading} = useGetAllTransactions({filter:switchButton,token})
     const [transactionsfiltered, settransactionsfiltered] = useState([]);
@@ -29,6 +29,7 @@ const CardTransactions = ({switchButton,token}) => {
                 id={el.id_transaction}
                 date={el.date}
                 key={el.id_transaction}
+                setmodalActive={setmodalActive}
                 />
             )
             })

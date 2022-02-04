@@ -4,7 +4,7 @@ import IconAdd from '../../assets/add-icon.svg'
 import axios from 'axios';
 import userContext from "../../context/userContext";
 
-const TransactionForm = ({setswitchButton}) => {
+const TransactionForm = ({setswitchButton,modalActive}) => {
     const {user} = useContext(userContext)
     const PATH = import.meta.env.DEV ? import.meta.env.VITE_API_DEV : import.meta.env.VITE_API_PROD; 
     const [addIsVisible, setaddIsVisible] = useState(false);
@@ -92,7 +92,7 @@ const TransactionForm = ({setswitchButton}) => {
 
     return (
         <>
-            <div className="card-new-transaction">
+            <div className="card-new-transaction" style={{zIndex:!!modalActive?'26':'30'}}>
                 <div className="new-transaction">
                     <p>New Transaction</p>
                 </div>

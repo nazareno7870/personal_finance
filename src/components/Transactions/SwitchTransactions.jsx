@@ -1,6 +1,6 @@
 import CardTransactions from "./CardTransactions";
 
-const SwitchTransactions = ({switchButton, setswitchButton,token}) => {
+const SwitchTransactions = ({switchButton, setswitchButton,token,setmodalActive}) => {
 
     return (
         <>
@@ -11,6 +11,7 @@ const SwitchTransactions = ({switchButton, setswitchButton,token}) => {
             <CardTransactions
             token={token}
             switchButton={switchButton}
+            setmodalActive={setmodalActive}
             />
         </>
     );
