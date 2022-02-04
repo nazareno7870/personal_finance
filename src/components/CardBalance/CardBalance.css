@@ -10,6 +10,7 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 20px;
+    max-width: 445px;
 }
 .balance{
     font-family: 'Raleway', sans-serif;

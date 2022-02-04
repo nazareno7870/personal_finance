@@ -10,6 +10,7 @@
     align-items: center;
     border-radius: 20px;
     box-shadow: 1px 1px 2px #8d8d8d;
+    max-width: 700px;
 
 }
 .new-transaction{
@@ -186,6 +187,7 @@
     align-items: center;
     border-radius: 20px;
     box-shadow: 1px 1px 2px #8d8d8d;
+    max-width: 700px;
 }
 
 .btn.active{
@@ -217,4 +219,42 @@
     padding: 20px;
     color: #4f006d;
     font-weight: 700;
+}
+.title-desktop{
+    display: none;
+
+}
+@media (min-width: 700px) {
+   .card-new-transaction{
+       display: none;
+   }
+   .form-new-transaction{
+    position: relative;
+    max-width: 700px;
+    margin: 20px auto;
+    border-radius:20px;
+    height: 300px;
+    z-index: 26;
+  }
+  .form-new-transaction.hidden{
+    height: 300px;
+    padding: 40px 20px;
+    z-index: 26;
+    }
+    .title-desktop{
+        display: block;
+        color: #4c0070;
+        font-weight: 600;
+        margin-top: -20px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+.banner-add{
+    top: 10px;
+    max-width: 200px;
+    position: fixed;
+    left: auto;
+    right: 20px;
+}
 }

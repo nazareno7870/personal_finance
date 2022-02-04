@@ -102,6 +102,7 @@ const TransactionForm = ({setswitchButton}) => {
             </div>
 
             <form className={`form-new-transaction ${addIsVisible ? '' : 'hidden'}`}>
+                <div className="title-desktop">Add new Transaction</div>
                 <div className="item-new-transaction" >
                     <label >Concept</label>
                     <input style={{borderBottom: concept === '' ?'1px solid #c70808':'1px solid #9c0682' }} value={concept} onChange={handleConcept} type={'text'} />

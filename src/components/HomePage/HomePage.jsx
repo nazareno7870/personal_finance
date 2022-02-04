@@ -6,21 +6,36 @@ import NavBar from "../NavBar/NavBar";
 import { useContext } from "react";
 import userContext from "../../context/userContext";
 import useIsLogin from "../../services/useIsLogin";
+import SideBar from "../SideBar/SideBar";
+import './HomePage.css'
 
 const HomePage = () => {
     const {user} = useContext(userContext)
     useIsLogin()
     
     return (
-        <>
+        <>  
+
             <Background/>
-            <TopBar title={'Wallet'}/>
-            <CardBalance
-            token={user.token}
-            />
-            <LastTransactions
-            token={user.token}
-            />
+
+            <div className="desktop-container">
+
+                <div className="left-side">
+                    <SideBar/>
+                </div>
+
+                <div className="right-side">
+
+                    <TopBar title={'Wallet'}/>
+                    <CardBalance
+                    token={user.token}
+                    />
+                    <LastTransactions
+                    token={user.token}
+                    />
+                </div>
+             </div>
+
             <NavBar/>
         </>
 

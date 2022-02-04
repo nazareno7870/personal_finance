@@ -171,8 +171,8 @@ const TransactionItem = ({concept,category,type,amount,date,id}) => {
                 </div>
             </div>}
 
-            <div className="banner-add" style={{opacity: showBannerAdd ? 1 : 0}}>
-                <p>Create successfully</p>
+            <div className="banner-add change" style={{opacity: showBannerAdd ? 1 : 0}}>
+                <p>Change successfully</p>
                 <img src={CheckIcon} alt="Check Icon" />
             </div>
     </>

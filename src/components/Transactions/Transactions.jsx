@@ -6,6 +6,7 @@ import TransactionForm from './TransactionForm';
 import SwitchTransactions from './SwitchTransactions';
 import { useState,useContext} from "react";
 import userContext from "../../context/userContext";
+import SideBar from '../SideBar/SideBar';
 
 const Transactions = () => {
     const {user} = useContext(userContext)
@@ -13,15 +14,27 @@ const Transactions = () => {
     return (
             <>
                 <Background/>
-                <TopBar title={'Transactions'}/>
-                <TransactionForm
-                setswitchButton={setswitchButton}
-                />
-                <SwitchTransactions
-                token={user.token}
-                switchButton={switchButton}
-                setswitchButton={setswitchButton}
-                />
+                <div className="desktop-container">
+
+                    <div className="left-side">
+                        <SideBar/>
+                    </div>
+
+                    <div className="right-side">
+
+                        <TopBar title={'Transactions'}/>
+                        <TransactionForm
+                        setswitchButton={setswitchButton}
+                        />
+                        <SwitchTransactions
+                        token={user.token}
+                        switchButton={switchButton}
+                        setswitchButton={setswitchButton}
+                        />
+                    </div>
+                </div>
+
+
                 <NavBar/>
             </>
     );

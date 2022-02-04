@@ -22,3 +22,8 @@
 .icon.active img{
     filter: invert(11%) sepia(59%) saturate(7357%) hue-rotate(302deg) brightness(89%) contrast(101%);
 }
+@media (min-width: 700px) {
+   .navbar{
+       display: none;
+   }
+}

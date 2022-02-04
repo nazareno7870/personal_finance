@@ -1,0 +1,14 @@
+@media (min-width: 700px) {
+   .desktop-container{
+       display: flex;
+       flex-direction: row;
+       justify-content: flex-start ;
+   }
+   .right-side{
+    flex-grow: 1;
+    position: relative;
+   }
+   .left-side{
+    width: 300px;
+   }
+}

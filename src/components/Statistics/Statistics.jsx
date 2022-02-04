@@ -7,6 +7,7 @@ import { useState,useContext,useEffect} from "react";
 import userContext from "../../context/userContext";
 import Spinner from "../Spinner/Spinner";
 import './Statistics.css'
+import SideBar from "../SideBar/SideBar";
 const Statistics = () => {
     useIsLogin()
     const {user} = useContext(userContext)
@@ -37,60 +38,79 @@ const Statistics = () => {
     return (
         <>
         <Background/>
-        <TopBar title={'Statistics'} />
+        <div className="desktop-container">
 
-        <div className="card-switch card-categories" >
+            <div className="left-side">
+                <SideBar/>
+            </div>
 
+            <div className="right-side">
 
-
-            {!loading
-            ?
-            <>     
-                <button className="btn" onClick={()=>setshowcategories(!showcategories)}>Select Category</button>
-
-
-
-            </>
-            :<Spinner/>}
-
-        </div>
-        <div className={`form-new-transaction ${showcategories ? '' : 'hidden'}`} style={{height:showcategories?`${categories.length*60}px`:'0px',minHeight:showcategories?'100px':'0px'}}>
-                <div className="categories"> 
-                {categories.map(cat=>{
-                            return(<button onClick={handleFilter} className={`btn categories ${filter===cat ? 'active' : ''}`}>{cat}</button>)
-                        })}
-                </div>
-        </div>
-   
+                <TopBar title={'Statistics'} />
+                <div className="card-switch card-categories" >
 
 
-        <div className="card-transactions">
-            <div className="title"><h3>{filter===''?'Select category':filter}</h3></div>
-            {!loading
-                ?   transactionsfiltered.map(el=>{
-                    const elDate = new Date(el.date)
-                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                    const date = elDate.toLocaleDateString("es-ES", options)
 
-                return(
-                    <div key={el.id_transaction} className="item-transaction">
-                        <div className="info-transaction">
-                            <h3>{el.concept}</h3>
-                            <p>{date}</p>
-                        </div>
-                        <div className={`amount-transaction ${el.type === 'debit' ? 'outflow': 'entry'}`}>
-                            <h3>{el.type === 'debit' ? '-': '+'}${el.amount}</h3>
+                    {!loading
+                    ?
+                    <>     
+                        <button className="btn" onClick={()=>setshowcategories(!showcategories)}>Select Category</button>
+
+
+
+                    </>
+                    :<Spinner/>}
+
+                    </div>
+                    <div className={`form-new-transaction categories ${showcategories ? '' : 'hidden'}`} style={{height:showcategories?`${categories.length*70}px`:'0px',minHeight:showcategories?'100px':'0px'}}>
+                        <div className="categories"> 
+                        {categories.map(cat=>{
+                                    return(<button onClick={handleFilter} className={`btn categories ${filter===cat ? 'active' : ''}`}>{cat}</button>)
+                                })}
                         </div>
                     </div>
-                )
-                })
-                :<Spinner/>
-            }
+
+                    <div className={`form-new-transaction categories-desktop`}>
+                    {!loading 
+                    ?<div className="categories"> 
+                        {categories.map(cat=>{
+                                    return(<button onClick={handleFilter} className={`btn categories ${filter===cat ? 'active' : ''}`}>{cat}</button>)
+                                })}
+                     </div>
+                     :<Spinner/>}
+                    </div>
+
+                    <div className="card-transactions desktop">
+                    <div className="title"><h3>{filter===''?'Select category':filter}</h3></div>
+                    {!loading
+                        ?   transactionsfiltered.map(el=>{
+                            const elDate = new Date(el.date)
+                            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                            const date = elDate.toLocaleDateString("es-ES", options)
+
+                        return(
+                            <div key={el.id_transaction} className="item-transaction">
+                                <div className="info-transaction">
+                                    <h3>{el.concept}</h3>
+                                    <p>{date}</p>
+                                </div>
+                                <div className={`amount-transaction ${el.type === 'debit' ? 'outflow': 'entry'}`}>
+                                    <h3>{el.type === 'debit' ? '-': '+'}${el.amount}</h3>
+                                </div>
+                            </div>
+                        )
+                        })
+                        :<Spinner/>
+                    }
 
 
 
 
+                </div>
+            </div>
         </div>
+
+
         <NavBar/>
     </>
     );
